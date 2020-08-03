@@ -18,23 +18,23 @@
 // 02110-1301 USA
 // 
 
-var searchFunc = function(path, search_id, content_id) {
+var searchFunc = function (path, search_id, content_id) {
     'use strict';
     $.ajax({
         url: path,
         dataType: "xml",
-        success: function( xmlResponse ) {
+        success: function (xmlResponse) {
             // get the contents from search data
-            var datas = $( "entry", xmlResponse ).map(function() {
+            var datas = $("entry", xmlResponse).map(function () {
                 return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
+                    title: $("title", this).text(),
+                    content: $("content", this).text(),
+                    url: $("url", this).text()
                 };
             }).get();
 
             var $input = document.getElementById(search_id);
-			if (!$input) return;
+            if (!$input) return;
             var $resultContent = document.getElementById(content_id);
             if ($("#local-search-input").length > 0) {
                 $input.addEventListener('input', function () {
